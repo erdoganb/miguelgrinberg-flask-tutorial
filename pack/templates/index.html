@@ -1,36 +1,9 @@
+{% extends "base.html" %}
 
-
-<!doctype html>
-<html>
-    <head>
-        {% if title %}
-        <title>{{ title }} - Microblog</title>
-        {% else %}
-        <title>Welcome to Microblog!</title>
-        {% endif %}
-    </head>
-    <body>
-        <div>Microblog: <a href="/index">Home</a>
-                  <a href="/time">Time</a>
-        </div>
-        <h1>Hello, {{ user.username }}!</h1>
-        <hr>
-        {% for post in posts %}
-        <div>
-            <p>
-                <h3>
-                    {{post.author.username}}
-                </h3>
-                <b>
-                    {{post.body}}
-                </b>
-            </p>
-        </div>
-        <hr>
-        {% endfor %}
-        <footer>
-            <p>Author: Hege Refsnes</p>
-            <p><a href="mailto:hege@example.com">hege@example.com</a></p>
-          </footer> 
-    </body>
-</html>
+{%block content%}
+<h1>Hi, {{ user.username }}!</h1>
+{% for post in posts %}
+<hr>
+<div><p>{{ post.author.username }} says: <b>{{ post.body }}</b></p></div>
+{% endfor %}
+{%endblock%}
